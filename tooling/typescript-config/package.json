@@ -1,0 +1,10 @@
+{
+  "name": "@coverly/typescript-config",
+  "version": "0.0.0",
+  "private": true,
+  "exports": {
+    "./base.json": "./base.json",
+    "./node.json": "./node.json",
+    "./react-native.json": "./react-native.json"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "name": "@coverly/orpc",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "check-types": "tsc -p tsconfig.json --noEmit",
+    "lint": "eslint . --max-warnings 0",
+    "test": "vitest run --passWithNoTests"
+  },
+  "dependencies": {
+    "@coverly/shared": "workspace:*",
+    "@orpc/client": "1.9.2",
+    "@orpc/contract": "1.9.2",
+    "@orpc/server": "1.9.2",
+    "zod": "4.1.12"
+  },
+  "devDependencies": {
+    "@coverly/eslint-config": "workspace:*",
+    "@coverly/typescript-config": "workspace:*",
+    "@types/node": "24.6.0",
+    "eslint": "9.39.1",
+    "typescript": "5.9.3",
+    "vitest": "3.2.4"
+  }
+}

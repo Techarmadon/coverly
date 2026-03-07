@@ -1,0 +1,28 @@
+{
+  "name": "@coverly/auth",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "check-types": "tsc -p tsconfig.json --noEmit",
+    "lint": "eslint . --max-warnings 0",
+    "test": "vitest run --passWithNoTests"
+  },
+  "dependencies": {
+    "@better-auth/expo": "1.5.5",
+    "@better-auth/prisma-adapter": "1.5.5",
+    "@coverly/db": "workspace:*",
+    "better-auth": "1.5.5"
+  },
+  "devDependencies": {
+    "@coverly/eslint-config": "workspace:*",
+    "@coverly/typescript-config": "workspace:*",
+    "@types/node": "24.6.0",
+    "eslint": "9.39.1",
+    "typescript": "5.9.3",
+    "vitest": "3.2.4"
+  }
+}
