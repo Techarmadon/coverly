@@ -1,26 +1,26 @@
-import { SafeAreaView, SafeAreaProvider } from 'react-native-safe-area-context'
-import { Button, Provider as PaperProvider, Text } from 'react-native-paper'
-import { useCallback, useState } from 'react'
-import { useColorScheme, View } from 'react-native'
-import { MaterialDesignIconsIconName } from '@react-native-vector-icons/material-design-icons'
-import useAppTheme, { theme } from '@/hook/use-app-theme'
+import { SafeAreaView, SafeAreaProvider } from "react-native-safe-area-context";
+import { Button, Provider as PaperProvider, Text } from "react-native-paper";
+import { useCallback, useState } from "react";
+import { useColorScheme, View } from "react-native";
+import { MaterialDesignIconsIconName } from "@react-native-vector-icons/material-design-icons";
+import useAppTheme, { theme } from "@/hook/use-app-theme";
 
-const sunIcon: MaterialDesignIconsIconName = 'white-balance-sunny'
-const moonIcon: MaterialDesignIconsIconName = 'moon-waning-crescent'
+const sunIcon: MaterialDesignIconsIconName = "white-balance-sunny";
+const moonIcon: MaterialDesignIconsIconName = "moon-waning-crescent";
 
 function Root({
   mode,
   setMode,
 }: {
-  mode: 'light' | 'dark'
-  setMode: (mode: 'light' | 'dark') => void
+  mode: "light" | "dark";
+  setMode: (mode: "light" | "dark") => void;
 }) {
-  const theme = useAppTheme()
+  const theme = useAppTheme();
 
   const toggleMode = useCallback(() => {
-    const next = mode === 'dark' ? 'light' : 'dark'
-    setMode(next)
-  }, [mode, setMode])
+    const next = mode === "dark" ? "light" : "dark";
+    setMode(next);
+  }, [mode, setMode]);
 
   return (
     <SafeAreaView
@@ -31,43 +31,43 @@ function Root({
       }}
     >
       <Text
-        variant='headlineMedium'
+        variant="headlineMedium"
         style={{
-          textAlign: 'center',
+          textAlign: "center",
         }}
       >
-        Hello From{' '}
-        <Text style={{ fontWeight: 'bold', color: theme.colors.primary }}>
+        Hello From{" "}
+        <Text style={{ fontWeight: "bold", color: theme.colors.primary }}>
           Coverly
-        </Text>{' '}
+        </Text>{" "}
         Mobile
       </Text>
-      <View style={{ gap: 16, flex: 1, justifyContent: 'flex-end' }}>
-        <Button mode='contained' dark={mode === 'dark'} uppercase compact>
+      <View style={{ gap: 16, flex: 1, justifyContent: "flex-end" }}>
+        <Button mode="contained" dark={mode === "dark"} uppercase compact>
           Login
         </Button>
         <Button
-          mode='outlined'
+          mode="outlined"
           uppercase
           onPress={toggleMode}
-          icon={mode === 'dark' ? sunIcon : moonIcon}
+          icon={mode === "dark" ? sunIcon : moonIcon}
         >
-          <Text>{mode === 'dark' ? 'Light Mode' : 'Dark Mode'}</Text>
+          <Text>{mode === "dark" ? "Light Mode" : "Dark Mode"}</Text>
         </Button>
       </View>
     </SafeAreaView>
-  )
+  );
 }
 
 export default function App() {
-  const systemScheme = useColorScheme()
-  const [override, setOverride] = useState<'light' | 'dark' | null>(null)
-  const mode = override ?? systemScheme ?? 'light'
+  const systemScheme = useColorScheme();
+  const [override, setOverride] = useState<"light" | "dark" | null>(null);
+  const mode = override ?? systemScheme ?? "light";
   return (
     <SafeAreaProvider>
       <PaperProvider theme={theme[mode]}>
         <Root mode={mode} setMode={setOverride} />
       </PaperProvider>
     </SafeAreaProvider>
-  )
+  );
 }

@@ -1,5 +1,8 @@
 import { describe, expect, it } from "vitest";
-import { assertNoOverlap, hasOverlap } from "../src/modules/shifts/domain/rules.js";
+import {
+  assertNoOverlap,
+  hasOverlap,
+} from "../src/modules/shifts/domain/rules.js";
 
 describe("shift overlap rules", () => {
   it("detects overlap correctly", () => {
