@@ -1,7 +1,8 @@
 {
   "extends": "@coverly/typescript-config/node.json",
   "compilerOptions": {
-    "outDir": "dist"
+    "noEmit": false,
+    "outDir": "./dist"
   },
   "include": ["src/**/*.ts", "prisma/**/*.ts"],
   "exclude": ["node_modules", "dist"]

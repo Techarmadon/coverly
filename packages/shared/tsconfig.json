@@ -1,7 +1,8 @@
 {
   "extends": "@coverly/typescript-config/node.json",
   "compilerOptions": {
-    "outDir": "dist"
+    "outDir": "./dist",
+    "noEmit": false
   },
   "include": ["src/**/*.ts"],
   "exclude": ["node_modules", "dist"]

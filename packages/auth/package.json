@@ -7,6 +7,7 @@
     ".": "./src/index.ts"
   },
   "scripts": {
+    "build": "rimraf dist && tsc",
     "check-types": "tsc -p tsconfig.json --noEmit",
     "lint": "eslint . --max-warnings 0",
     "test": "vitest run --passWithNoTests"
@@ -15,6 +16,7 @@
     "@better-auth/expo": "1.5.5",
     "@better-auth/prisma-adapter": "1.5.5",
     "@coverly/db": "workspace:*",
+    "@coverly/shared": "workspace:*",
     "better-auth": "1.5.5"
   },
   "devDependencies": {

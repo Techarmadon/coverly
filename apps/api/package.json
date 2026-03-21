@@ -5,7 +5,7 @@
   "type": "module",
   "main": "./src/index.ts",
   "scripts": {
-    "dev:api": "tsx watch src/index.ts",
+    "dev": "tsx --watch --env-file=.env ./src/index.ts",
     "start": "tsx src/index.ts",
     "build": "tsc -p tsconfig.json",
     "check-types": "tsc -p tsconfig.json --noEmit",
@@ -13,6 +13,7 @@
     "test": "vitest run"
   },
   "dependencies": {
+    "dotenv": "17.3.1",
     "@coverly/auth": "workspace:*",
     "@coverly/db": "workspace:*",
     "@coverly/orpc": "workspace:*",

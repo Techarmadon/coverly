@@ -1,11 +1,11 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet } from 'react-native'
 
 export const text = StyleSheet.create({
   h1: {
     fontSize: 24,
-    fontWeight: "bold",
+    fontWeight: 'bold',
   },
   highlight: {
-    color: "red",
+    color: 'red',
   },
-});
+})

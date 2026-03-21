@@ -8,6 +8,18 @@
       "outputs": ["dist/**", ".expo/**"],
       "env": ["DATABASE_URL", "BETTER_AUTH_URL"]
     },
+    "build:packages": {
+      "dependsOn": ["^build"],
+      "with": [
+        "@coverly/shared#build",
+        "@coverly/auth#build",
+        "@coverly/db#build",
+        "@coverly/orpc#build"
+      ],
+      "inputs": ["$TURBO_DEFAULT$", ".env*"],
+      "outputs": ["dist/**"],
+      "env": []
+    },
     "lint": {
       "dependsOn": ["^lint"]
     },
@@ -41,13 +53,12 @@
       "cache": false,
       "persistent": true
     },
-    "dev:api": {
+    "dev": {
       "cache": false,
       "persistent": true
     },
     "dev:mobile": {
-      "cache": false,
-      "persistent": true
+      "with": ["@coverly/mobile#dev", "@coverly/api#dev"]
     }
   }
 }

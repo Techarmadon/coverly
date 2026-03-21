@@ -4,6 +4,6 @@ packages:
   - tooling/*
 
 onlyBuiltDependencies:
-  - "@prisma/engines"
+  - '@prisma/engines'
   - esbuild
   - prisma

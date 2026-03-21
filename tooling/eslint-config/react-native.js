@@ -1,7 +1,8 @@
-import pluginReact from "eslint-plugin-react";
-import pluginReactHooks from "eslint-plugin-react-hooks";
-import globals from "globals";
-import { config as baseConfig } from "./base.js";
+import pluginReact from 'eslint-plugin-react'
+import pluginReactHooks from 'eslint-plugin-react-hooks'
+import globals from 'globals'
+
+import { config as baseConfig } from './base.js'
 
 /** @type {import("eslint").Linter.Config[]} */
 export const config = [
@@ -16,16 +17,16 @@ export const config = [
     },
     settings: {
       react: {
-        version: "detect",
+        version: 'detect',
       },
     },
     plugins: {
-      "react-hooks": pluginReactHooks,
+      'react-hooks': pluginReactHooks,
     },
     rules: {
       ...pluginReactHooks.configs.recommended.rules,
-      "react/react-in-jsx-scope": "off",
-      "react/prop-types": "off",
+      'react/react-in-jsx-scope': 'off',
+      'react/prop-types': 'off',
     },
   },
-];
+]

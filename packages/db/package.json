@@ -7,11 +7,12 @@
     ".": "./src/client.ts"
   },
   "scripts": {
+    "build": "rimraf dist && tsc",
     "db:generate": "prisma generate",
     "db:migrate:dev": "prisma migrate dev",
     "db:migrate:deploy": "prisma migrate deploy",
     "db:push": "prisma db push",
-    "db:seed": "tsx prisma/seed.ts",
+    "db:seed": "tsx src/seed.ts",
     "db:studio": "prisma studio",
     "check-types": "tsc -p tsconfig.json --noEmit",
     "lint": "eslint . --max-warnings 0",
@@ -20,9 +21,11 @@
   "dependencies": {
     "@prisma/adapter-pg": "7.2.0",
     "@prisma/client": "7.2.0",
-    "pg": "8.16.3"
+    "pg": "8.16.3",
+    "dotenv": "17.2.3"
   },
   "devDependencies": {
+    "better-auth": "1.5.5",
     "@coverly/eslint-config": "workspace:*",
     "@coverly/typescript-config": "workspace:*",
     "@types/node": "24.6.0",
