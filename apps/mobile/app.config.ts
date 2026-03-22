@@ -12,9 +12,15 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
   experiments: { typedRoutes: true },
   ios: {
     bundleIdentifier: 'techarmadon.coverly.app',
+    backgroundColor: '#000',
   },
   android: {
     package: 'techarmadon.coverly.app',
   },
-  plugins: ['expo-secure-store', 'expo-web-browser', 'expo-router'],
+  plugins: [
+    'expo-secure-store',
+    'expo-web-browser',
+    'expo-router',
+    'expo-system-ui',
+  ],
 })
