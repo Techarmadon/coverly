@@ -1,29 +1,19 @@
 import { SafeAreaView } from 'react-native-safe-area-context'
-import { Button, Text, TextInput } from 'react-native-paper'
-import { useCallback, useState } from 'react'
+import { Button, SegmentedButtons, Text, TextInput } from 'react-native-paper'
+import { useState } from 'react'
 import { View } from 'react-native'
-import { MaterialDesignIconsIconName } from '@react-native-vector-icons/material-design-icons'
 import useAppTheme from '@/hook/use-app-theme'
+import {
+  type ThemePreference,
+  useThemePreference,
+} from '@/context/theme-preference'
 import { authClient } from '@/auth-client'
 
-const sunIcon: MaterialDesignIconsIconName = 'white-balance-sunny'
-const moonIcon: MaterialDesignIconsIconName = 'moon-waning-crescent'
-
-interface SignInProps {
-  mode: 'light' | 'dark'
-  setMode: (mode: 'light' | 'dark') => void
-}
-
-function SignIn({ mode, setMode }: SignInProps) {
+function SignIn() {
   const theme = useAppTheme()
-
+  const { preference, setPreference, resolvedMode } = useThemePreference()
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-
-  const toggleMode = useCallback(() => {
-    const next = mode === 'dark' ? 'light' : 'dark'
-    setMode(next)
-  }, [mode, setMode])
 
   const handleLogin = async () => {
     console.log('Logging in...')
@@ -53,6 +43,22 @@ function SignIn({ mode, setMode }: SignInProps) {
           </Text>{' '}
           Mobile
         </Text>
+        <View style={{ marginVertical: 16 }}>
+          <Text variant='labelLarge' style={{ marginBottom: 8 }}>
+            Appearance
+          </Text>
+          <SegmentedButtons
+            value={preference}
+            onValueChange={(value) =>
+              setPreference(value as ThemePreference)
+            }
+            buttons={[
+              { value: 'system', label: 'System' },
+              { value: 'light', label: 'Light' },
+              { value: 'dark', label: 'Dark' },
+            ]}
+          />
+        </View>
         <View>
           <TextInput
             placeholder='Email'
@@ -68,20 +74,12 @@ function SignIn({ mode, setMode }: SignInProps) {
         <View style={{ gap: 16, flex: 1, justifyContent: 'flex-end' }}>
           <Button
             mode='contained'
-            dark={mode === 'dark'}
+            dark={resolvedMode === 'dark'}
             uppercase
             compact
             onPress={handleLogin}
           >
             Login
-          </Button>
-          <Button
-            mode='outlined'
-            uppercase
-            onPress={toggleMode}
-            icon={mode === 'dark' ? sunIcon : moonIcon}
-          >
-            <Text>{mode === 'dark' ? 'Light Mode' : 'Dark Mode'}</Text>
           </Button>
         </View>
       </SafeAreaView>

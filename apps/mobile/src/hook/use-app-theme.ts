@@ -1,15 +1,9 @@
-import { MD3LightTheme, MD3DarkTheme, useTheme } from 'react-native-paper'
+import { useTheme } from 'react-native-paper'
+import type { AppPaperTheme } from '@/theme/paper-themes'
 
-/** Theme variants to pass to PaperProvider based on mode */
-export const theme = {
-  light: { ...MD3LightTheme },
-  dark: { ...MD3DarkTheme },
-}
-
-export type AppTheme = (typeof theme)['light']
-
+/** Paper theme from the nearest `PaperProvider` (use inside screens/layout under provider). */
 export function useAppTheme() {
-  return useTheme<AppTheme>()
+  return useTheme<AppPaperTheme>()
 }
 
 export default useAppTheme
